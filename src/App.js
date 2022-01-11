@@ -11,6 +11,23 @@ class App extends React.Component {
     handle: ''
   }
 
+  componentDidMount() {
+    axios.get('https://api.github.com/users/sean-vdw')
+      .then(resp => {
+        this.setState({
+          ...this.state,
+          userData: resp.data
+        })
+        axios.get('https://api.github.com/users/sean-vdw/followers')
+          .then(res => {
+            this.setState({
+              ...this.state,
+              followers: res.data
+            });
+          });
+      });
+  }
+
   handleChange = (e) => {
     this.setState({
       ...this.state,
