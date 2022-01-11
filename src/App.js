@@ -2,12 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import User from './components/User';
 import FollowerList from './components/FollowerList';
-import Follower from './components/Follower';
 
 
 class App extends React.Component {
   state = {
     userData: [],
+    followers: [],
     handle: ''
   }
 
@@ -27,6 +27,13 @@ class App extends React.Component {
           ...this.state,
           userData: resp.data
         });
+        axios.get(`https://api.github.com/users/${userHandle}/followers`)
+          .then(res => {
+            this.setState({
+              ...this.state,
+              followers: res.data
+            });
+          });
       });
   }
 
@@ -43,6 +50,8 @@ class App extends React.Component {
           <button onClick={this.handleSearch}>Search</button>
         </form>
         <User userData={this.state.userData} />
+        <h2>Followers:</h2>
+        <FollowerList followers={this.state.followers} />
       </div>
     );
   }
