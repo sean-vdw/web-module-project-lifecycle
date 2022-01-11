@@ -15,3 +15,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+img {
+  width: 185px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5% 2%;
+}
+
+.title {
+  font-size: 3rem;
+  color: #383838;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: #7c7c7c;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.input {
+  padding: 1%;
+  border: 0px transparent;
+  border-bottom: 1px solid #0d62ff;
+  margin-right: 2%;
+}
+
+.btn {
+  background-color: #c8dcff;
+  width: 15%;
+  color: #0d62ff;
+  padding: 1.2%;
+  margin: 0 1%;
+  border: 1px solid #0d62ff;
+  border-radius: 20px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #6c9fff;
+  color: #fff;
+}
+
+.profile-title {
+  margin: 5% 0 1%;
+}
+
+.user-cont {
+  padding: 4% 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.user-data {
+  text-align: center;
+  color: #7c7c7c;
+}
+
+.follower-cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.follower-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  margin: 3% 0;
+  background-color: #e6eeff;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.55);
+  border-radius: 8px;
+}

@@ -39,16 +39,19 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>Github Info</h1>
+      <div className='container'>
+        <h1 className='title'>Github Info</h1>
+        <p className='subtitle'>Enter a Github handle to begin...</p>
         <form>
           <input 
             placeholder='Github handle'
             onChange={this.handleChange}
             value={this.state.handle}
+            className='input'
           />
-          <button onClick={this.handleSearch}>Search</button>
+          <button onClick={this.handleSearch} className='btn'>Search</button>
         </form>
+        <h2 className='profile-title'>User Profile</h2>
         <User userData={this.state.userData} />
         <h2>Followers:</h2>
         <FollowerList followers={this.state.followers} />
