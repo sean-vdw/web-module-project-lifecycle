@@ -7,8 +7,8 @@ import Follower from './components/Follower';
 
 class App extends React.Component {
   state = {
-    handle: '',
-    url: ''
+    userData: [],
+    handle: ''
   }
 
   handleChange = (e) => {
@@ -20,11 +20,14 @@ class App extends React.Component {
 
   handleSearch = (e) => {
     e.preventDefault();
-    const handle = this.state.handle;
-    this.setState({
-      ...this.state,
-      url: `https://api.github.com/users/${handle}`
-    })
+    const userHandle = this.state.handle;
+    axios.get(`https://api.github.com/users/${userHandle}`)
+      .then(resp => {
+        this.setState({
+          ...this.state,
+          userData: resp.data
+        });
+      });
   }
 
   render() {
@@ -39,7 +42,7 @@ class App extends React.Component {
           />
           <button onClick={this.handleSearch}>Search</button>
         </form>
-        <User />
+        <User userData={this.state.userData} />
       </div>
     );
   }
