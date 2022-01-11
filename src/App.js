@@ -28,6 +28,19 @@ class App extends React.Component {
       });
   }
 
+  componentDidUpdate(prevState) {
+    const userHandle = this.state.handle;
+    if (prevState.userData !== this.state.userData) {
+      axios.get(`https://api.github.com/users/${userHandle}/followers`)
+        .then(res => {
+          this.setState({
+            ...this.state,
+            followers: res.data
+          });
+        });
+    }
+  }
+
   handleChange = (e) => {
     this.setState({
       ...this.state,
@@ -44,13 +57,6 @@ class App extends React.Component {
           ...this.state,
           userData: resp.data
         });
-        axios.get(`https://api.github.com/users/${userHandle}/followers`)
-          .then(res => {
-            this.setState({
-              ...this.state,
-              followers: res.data
-            });
-          });
       });
   }
 
